@@ -1,8 +1,9 @@
 #Configurações de IP
 ifconfig eth0 10.1.1.254/24
-#IP gerado pelo Kathara na interface 1: 172.24.0.2
+ifconfig eth1 172.24.0.2/24
 
 #Configurações de roteamento
+route add default gw 172.24.0.1
 route add -net 192.168.1.0/30 gw 10.1.1.253
 route add -net 192.168.2.0/30 gw 10.1.1.253
 route add -net 192.168.3.0/30 gw 10.1.1.253

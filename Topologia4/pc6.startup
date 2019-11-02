@@ -2,4 +2,4 @@
 ifconfig eth0 10.2.2.2/24
 
 #Configurações de IP
-route add default gw 10.2.1.254
+route add default gw 10.2.2.254
