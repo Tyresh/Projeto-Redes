@@ -1,6 +1,10 @@
-#Configurações de IP
+﻿#Configurações de IP
 ifconfig eth0 10.1.1.254/24
-ifconfig eth1 172.24.0.2/24
+ifconfig eth1 172.24.0.2/24 
+
+#O IP de interface eth1 é gerado pelo Kathara automaticamente baseado na faixa de rede da sua máquina.
+#Este IP foi gerado na minha máquina. Depois de dar o git clone, certifique-se de apagar este IP
+#E deixar que o Kathara gere outro IP baseado na faixa de rede da sua máquina.
 
 #Configurações de roteamento
 route add default gw 172.24.0.1
@@ -9,4 +13,3 @@ route add -net 192.168.2.0/30 gw 10.1.1.253
 route add -net 192.168.3.0/30 gw 10.1.1.253
 route add -net 10.2.1.0/24 gw 10.1.1.253
 route add -net 10.2.2.0/24 gw 10.1.1.253
-
