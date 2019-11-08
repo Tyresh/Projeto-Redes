@@ -1,15 +1,17 @@
 ﻿#Configurações de IP
 ifconfig eth0 10.1.1.254/24
-ifconfig eth1 172.24.0.2/24 
-
-#O IP de interface eth1 é gerado pelo Kathara automaticamente baseado na faixa de rede da sua máquina.
-#Este IP foi gerado na minha máquina. Depois de dar o git clone, certifique-se de apagar este IP
-#E deixar que o Kathara gere outro IP baseado na faixa de rede da sua máquina.
 
 #Configurações de roteamento
-route add default gw 172.24.0.1
+route add default gw 172.24.0.1 #Este é o IP da minha máquina física. 
+
+#O Kathara irá gerar um IP automaticamente para seu eth1 quando você der um "lstart" Isto porque, no lab.conf, o asa1 está sozinho na rede G, com interface 1. Este IP, provavelmente será da mesma faixa de rede que o IP da sua máquina física (Certifique-se indo no terminal e digitando o comando ifconfig). Então, para ligarmos nossa máquina virtual (asa1), com nossa máquina física, é preciso definir nossa máquina física como gateway padrão de asa1.
+
 route add -net 192.168.1.0/30 gw 10.1.1.253
 route add -net 192.168.2.0/30 gw 10.1.1.253
 route add -net 192.168.3.0/30 gw 10.1.1.253
 route add -net 10.2.1.0/24 gw 10.1.1.253
 route add -net 10.2.2.0/24 gw 10.1.1.253
+
+
+#Configuração do IPTables
+iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
